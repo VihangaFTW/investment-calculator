@@ -1,7 +1,8 @@
 import Header from "./components/Header";
+import Results from "./components/Results";
 import UserInput from "./components/UserInput";
 import { useState } from "react";
-import { calculateInvestmentResults } from "../util/investment";
+
 
 function App() {
 
@@ -15,15 +16,16 @@ function App() {
   function handleOnInputChange(event, name) {
     setInputData((prevInputData) => ({
       ...prevInputData,
-      [name]: event.target.value,
+      [name]: +event.target.value,
     }));
   }
 
 
   return (
     <>
-      <Header></Header>
-      <UserInput userInput={inputData} handleInput={handleOnInputChange}></UserInput>
+      <Header/>
+      <UserInput userInput={inputData} handleInput={handleOnInputChange}/>
+      <Results userInput={inputData}/>
     </>
   );
 }
